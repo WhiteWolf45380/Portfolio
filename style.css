@@ -1,0 +1,87 @@
+/* Forme générale des pages */
+html {
+    scroll-behavior: auto; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background: #222;
+    color: white;
+    padding: 0.1rem;
+    text-align: center;
+}
+
+nav {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+}
+
+h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Page des Projets*/
+.video_containeur {
+    position: relative;
+    width: 800px;
+    height: 450px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    border: 5px solid black;
+    background-color: black;
+}
+
+.project_video {
+    width: 800px;
+    height: 450px;
+    object-fit: cover;
+    border: 5px solid black;
+    display: block;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    background-color: black; /* pour éviter le fond blanc avant chargement */
+}
+
+.project_preview {
+    position: relative;
+    width: 800px;
+    height: 450px;
+    display: block;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    border: 5px solid black;
+    background-color: black;
+}

@@ -1,249 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — Mathéo DE PONTE</title>
-  <meta name="description" content="Portfolio personnel de Mathéo DE PONTE — designer / développeuse front-end" />
-  <style>
-    /* -----------------------------
-       Styles globaux et variables
-       ----------------------------- */
-    :root{
-      --bg: #0f1724;
-      --card: #0b1220;
-      --muted: #9aa4b2;
-      --accent: #6ee7b7;
-      --accent-2: #60a5fa;
-      --glass: rgba(255,255,255,0.04);
-      --radius: 14px;
-      --maxw: 1100px;
-      color-scheme: dark;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.06), transparent),
-                  radial-gradient(1000px 400px at 90% 90%, rgba(110,231,183,0.04), transparent),
-                  var(--bg);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:32px 20px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:24px;
-    }
-    .container{width:100%;max-width:var(--maxw);}
-
-    /* Header */
-    header{
-      display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:28px;
-    }
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;align-items:center;justify-content:center;font-weight:700;color:#022;margin-right:0;box-shadow:0 6px 18px rgba(2,6,23,0.6);
-    }
-    h1.site-title{font-size:18px;margin:0}
-    .nav{display:flex;gap:12px;align-items:center}
-    .nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
-    .nav a:hover{background:var(--glass);color:var(--accent)}
-
-    /* Grid */
-    .layout{display:grid;grid-template-columns:350px 1fr;gap:28px;align-items:start}
-
-    /* Sidebar */
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.6);
-    }
-    .profile-photo{width:100%;height:220px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#012}
-    .name{margin:14px 0 4px;font-size:20px}
-    .role{color:var(--muted);font-size:13px;margin:0 0 14px}
-    .bio{font-size:14px;color:var(--muted);line-height:1.45}
-    .contact-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
-    .contact-list a{font-size:14px;color:var(--muted);text-decoration:none;padding:8px;border-radius:10px}
-    .contact-list a:hover{background:var(--glass);color:var(--accent)}
-    .skills{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
-
-    /* Main */
-    main{display:flex;flex-direction:column;gap:20px}
-    .hero{display:flex;justify-content:space-between;align-items:center;gap:20px}
-    .hero-left h2{margin:0;font-size:26px}
-    .hero-left p{margin:6px 0;color:var(--muted)}
-    .cta{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012;padding:10px 16px;border-radius:12px;font-weight:600;text-decoration:none}
-
-    /* Projects */
-    .projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-    .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center}
-    .thumb{width:110px;height:72px;border-radius:8px;flex-shrink:0;background:linear-gradient(45deg,rgba(255,255,255,0.03),transparent);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
-    .project h3{margin:0;font-size:16px}
-    .project p{margin:6px 0 0;color:var(--muted);font-size:13px}
-
-    /* About / contact */
-    .about{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
-    form.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    form.contact-form textarea{grid-column:1 / -1;min-height:110px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
-    input[type=text],input[type=email]{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
-    .btn-send{grid-column:1 / -1;background:linear-gradient(90deg,var(--accent-2),var(--accent));padding:12px;border-radius:10px;border:none;color:#012;font-weight:700}
-
-    footer{margin-top:6px;color:var(--muted);font-size:13px}
-
-    /* Responsive */
-    @media (max-width:900px){
-      .layout{grid-template-columns:1fr;}
-      .projects-grid{grid-template-columns:1fr}
-      .hero{flex-direction:column;align-items:flex-start}
-      header{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DE PONTE Mathéo - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">JD</div>
-        <div>
-          <h1 class="site-title">Mathéo DE PONTE — Portfolio</h1>
-          <div style="color:var(--muted);font-size:13px">Designer & développeuse front-end</div>
-        </div>
-      </div>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="#projets">Projets</a>
-        <a href="#a-propos">À propos</a>
-        <a href="#contact">Contact</a>
-        <a class="cta" href="#contact">Me contacter</a>
-      </nav>
-    </header>
+  <header>
+    <h1>Bienvenue sur mon Portfolio</h1>
+    <p>Une présentation de mes compétences, projets et objectifs</p>
+  </header>
 
-    <section class="layout">
-      <aside>
-        <div class="card">
-          <div class="profile-photo">JD</div>
-          <div class="name">Mathéo DE PONTE</div>
-          <div class="role">Designer & développeuse front-end</div>
-          <p class="bio">Je conçois des interfaces agréables et performantes. Mes compétences vont du design d'interface à la mise en œuvre front-end accessible et responsive.</p>
+  <nav>
+    <a href="main.html">Présentation</a>
+    <a href="projects.html">Projets</a>
+    <a href="cv.html">CV</a>
+    <a href="main.html#contact">Contact</a>
+  </nav>
 
-          <div class="contact-list">
-            <a href="mailto:Mathéo.dupont@example.com">✉️ Mathéo.dupont@example.com</a>
-            <a href="#">💼 LinkedIn / profil</a>
-            <a href="#">🐙 Github / Mathéo-doe</a>
-          </div>
+  <section id="presentation">
+    <h2>Présentation</h2>
+    <p>Infos personnelles, passions, expériences, langues, compétences, soft-skills...</p>
+  </section>
 
-          <div style="margin-top:12px">
-            <strong style="font-size:13px">Compétences</strong>
-            <div class="skills">
-              <span class="skill">HTML</span>
-              <span class="skill">CSS</span>
-              <span class="skill">JavaScript</span>
-              <span class="skill">React</span>
-              <span class="skill">Figma</span>
-            </div>
-          </div>
-        </div>
-      </aside>
+  <section id="objectif">
+    <h2>Mon Projet Professionnel</h2>
+    <p>Spécialité choisie, études prévues, métier souhaité, plan d’action...</p>
+  </section>
 
-      <main>
-        <section class="hero card">
-          <div class="hero-left">
-            <h2>Bonjour — je suis Mathéo, j'aide les équipes à créer des expériences web claires et rapides.</h2>
-            <p>Je travaille principalement sur des applications web, des sites vitrine et des composants réutilisables. Voici quelques-uns de mes projets récents.</p>
-            <a class="cta" href="#projets">Voir mes projets</a>
-          </div>
-          <div style="max-width:280px;text-align:right;color:var(--muted)">
-            <div><strong>Disponible pour freelance</strong></div>
-            <div style="margin-top:8px">Taux: 350€/jour · Localisation: Paris</div>
-          </div>
-        </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email : <a href="mailto:matheodeponte45@mail.com">matheodeponte45@mail.com</a></p>
+  </section>
 
-        <section id="projets">
-          <h3 style="margin:4px 0 12px">Projets récents</h3>
-          <div class="projects-grid">
-            <article class="project">
-              <div class="thumb">A</div>
-              <div>
-                <h3>App de gestion de tâches</h3>
-                <p>Application web PWA avec synchronisation hors-ligne et UX conçue pour productivité.</p>
-              </div>
-            </article>
+  <footer>
+    <p>&copy; 2025 - Portfolio de DE PONTE Mathéo</p>
+  </footer>
 
-            <article class="project">
-              <div class="thumb">B</div>
-              <div>
-                <h3>Site vitrine pour startup</h3>
-                <p>Site marketing performant et accessible, animation légère, optimisation SEO.</p>
-              </div>
-            </article>
-
-            <article class="project">
-              <div class="thumb">C</div>
-              <div>
-                <h3>Design system</h3>
-                <p>Bibliothèque de composants réutilisables (React) avec documentation Storybook.</p>
-              </div>
-            </article>
-
-            <article class="project">
-              <div class="thumb">D</div>
-              <div>
-                <h3>Refonte e-commerce</h3>
-                <p>Refonte UI/UX et conversion optimisée avec amélioration de la vitesse de chargement.</p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="a-propos" class="about" style="margin-top:12px">
-          <h3>À propos — en bref</h3>
-          <p style="color:var(--muted);margin-top:8px">Je m'appelle Mathéo DE PONTE. J'ai 6 ans d'expérience en design d'interface et développement front-end. J'aime travailler en étroite collaboration avec des product managers et développeurs pour transformer des problèmes complexes en interfaces simples.</p>
-
-          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-            <div style="flex:1;min-width:160px">
-              <strong>Langages</strong>
-              <div style="color:var(--muted);margin-top:6px">HTML · CSS · JavaScript · TypeScript</div>
-            </div>
-            <div style="flex:1;min-width:160px">
-              <strong>Outils</strong>
-              <div style="color:var(--muted);margin-top:6px">Figma · React · Vite · Storybook · Git</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" class="about" style="margin-top:12px">
-          <h3>Contact</h3>
-          <p style="color:var(--muted);margin-top:8px">Remplis le formulaire ci-dessous pour m'envoyer un message (formulaire d'exemple — il n'envoie rien pour l'instant).</p>
-
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulaire de démonstration — pas d\'envoi configuré.')">
-            <input type="text" placeholder="Ton nom" value="Visiteur" />
-            <input type="email" placeholder="Ton email" value="visiteur@example.com" />
-            <textarea placeholder="Ton message">Bonjour Mathéo — je voudrais discuter d'un projet.</textarea>
-            <button class="btn-send" type="submit">Envoyer</button>
-          </form>
-        </section>
-
-        <footer>
-          <div>© <span id="year"></span> Mathéo DE PONTE — Tous droits réservés.</div>
-        </footer>
-      </main>
-    </section>
-  </div>
-
-  <script>
-    // Insère l'année en bas de page
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Smooth scroll pour les ancres
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
-      })
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
