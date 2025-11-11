@@ -22,7 +22,7 @@ main {
 header {
     background: #222;
     color: white;
-    padding: 0.1rem;
+    padding: 0.05rem;
     text-align: center;
 }
 
@@ -44,7 +44,7 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-    padding: 8px 15px;
+    padding: 4px 15px;
     border-radius: 5px;
     transition: background 0.3s, color 0.3s;
 }
@@ -65,6 +65,10 @@ section {
     padding: 1rem;
     background: white;
     border-radius: 8px;
+}
+
+h1 {
+    margin-bottom: -5px;
 }
 
 h2 {
@@ -363,4 +367,37 @@ footer {
 #form-status {
     margin-top: 10px;
     text-align: center;
+}
+
+/* === Effet de fond & profondeur === */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('assets/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  background-attachment: scroll;
+}
+
+/* === Effet verre dépoli sur les sections === */
+section {
+  position: relative;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7); /* blanc translucide */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  color: #222; /* texte sombre = lisible sur clair */
+  z-index: 1;
+}
+
+/* === Header, nav et footer harmonisés === */
+header, nav, footer {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6);
 }

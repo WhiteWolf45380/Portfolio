@@ -26,3 +26,35 @@ navLinks.forEach(link => {
     link.classList.add('active');
   }
 });
+
+// Effet de fond
+window.addEventListener("load", () => {
+  const body = document.body;
+  
+  body.style.backgroundAttachment = 'fixed';
+
+  const img = new Image();
+  img.src = 'assets/background.jpg';
+  img.onload = () => {
+    function updateBackground() {
+      const scrollY = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const viewHeight = window.innerHeight;
+      const maxScroll = scrollHeight - viewHeight;
+      
+      // Plus la page est longue par rapport au viewport, plus on ralentit
+      const pageRatio = scrollHeight / viewHeight;
+      const slowdownFactor = 1 / pageRatio; // Inversement proportionnel
+      
+      const coefficient = maxScroll > 0 ? slowdownFactor : 0;
+      const offset = -scrollY * coefficient;
+
+      body.style.backgroundSize = 'cover';
+      body.style.backgroundPosition = `center ${offset}px`;
+    }
+
+    window.addEventListener("scroll", updateBackground);
+    window.addEventListener("resize", updateBackground);
+    updateBackground();
+  };
+});
