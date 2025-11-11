@@ -1,3 +1,4 @@
+/*--- Global ---*/
 html {
     height: 100%;
     scroll-behavior: auto; 
@@ -93,6 +94,17 @@ footer {
     margin-top: 2rem;
 }
 
+.paragraphe {
+    line-height: 150%;
+    text-align: justify;
+}
+
+.sub_description {
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+/*--- Main (loisirs) ---*/
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -167,6 +179,7 @@ footer {
     font-weight: bold;
 }
 
+/*--- Main (compétences) ---*/
 .skills-container {
     display: flex;
     flex-direction: column;
@@ -216,16 +229,7 @@ footer {
     display: block;
 }
 
-.paragraphe {
-    line-height: 150%;
-    text-align: justify;
-}
-
-.sub_description {
-    margin-top: -10px;
-    margin-bottom: 20px;
-}
-
+/*--- Projets (vidéos) ---*/
 .project_item {
     margin-bottom: 30px;
     width: 800px;
@@ -299,6 +303,25 @@ footer {
     pointer-events: auto;
 }
 
+/*--- CV (téléchargement) ---*/
+.download-btn {
+  display: inline-block;
+  padding: 20px 60px;
+  background-color: #444;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 120%;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin: 10px;
+}
+
+.download-btn:hover {
+  background-color: #222;
+}
+
+/*--- Contact (mail_sender) ---*/
 #contact form {
     display: flex;
     flex-direction: column;
