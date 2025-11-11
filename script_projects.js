@@ -1,3 +1,4 @@
+// Projets - vidéos
 const projects = [
   {
     name: "Othello",
@@ -38,6 +39,7 @@ const projects = [
 
 const container = document.getElementById("projects_container");
 
+// Lecteur mp4
 projects.forEach((proj, index) => {
   const div = document.createElement("div");
   div.className = "project_item";
@@ -75,7 +77,7 @@ projects.forEach((proj, index) => {
     }
   });
 
-  // Quand la vidéo finit → overlay Play visible + poster
+  // Vidéo finit
   video.addEventListener('ended', () => {
     video.pause();
     video.currentTime = 0;
@@ -84,7 +86,7 @@ projects.forEach((proj, index) => {
     videoContainer.classList.remove("playing");
   });
 
-  // Remise au début automatique si vidéo sort du viewport
+  // Vidéo sort du viewport
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting && !video.paused) {

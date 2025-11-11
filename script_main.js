@@ -1,4 +1,4 @@
-// Animation des compétences
+// Compétences - barres
 const skills = [
   { name: "Python", icon: "assets/icons/python.png", level: 99, color: "#3776AB" },
   { name: "HTML / CSS", icon: "assets/icons/html.png", level: 60, color: "#E34F26" },
@@ -24,7 +24,7 @@ skills.forEach(skill => {
   skills_container.appendChild(skillItem);
 });
 
-// Animation quand la barre apparaît
+  // Animation quand la barre apparaît
 const skillFills = document.querySelectorAll('.skill-fill');
 
 const skillsObserver = new IntersectionObserver(entries => {
@@ -41,7 +41,7 @@ const skillsObserver = new IntersectionObserver(entries => {
 skillFills.forEach(fill => skillsObserver.observe(fill));
 
 
-// Hobbies / Loisirs - cartes
+// Hobbies et Loisirs - cartes
 const hobbiesData = [
   { emoji: "💻", name: "Programmation", description: "Développeur passionné, créant des projets personnels et explorant le machine learning" },
   { emoji: "🎮", name: "Jeux vidéo", description: "Joueur curieux, explorant FPS, stratégie et jeux d’horreur pour le plaisir et la détente" },
