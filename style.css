@@ -43,6 +43,16 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li ul {
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
 footer {
     background: #222;
     color: white;
