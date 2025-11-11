@@ -26,10 +26,10 @@ header {
 }
 
 footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 1rem;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
 }
 
 nav {
@@ -41,21 +41,21 @@ nav {
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background 0.3s, color 0.3s;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
 }
 
 nav a.active {
-  background-color: #444;
-  color: #fff;
-  text-decoration: underline;
+    background-color: #444;
+    color: #fff;
+    text-decoration: underline;
 }
 
 nav a:hover {
-  background-color: #666;
+    background-color: #666;
 }
 
 section {
@@ -93,6 +93,105 @@ footer {
     margin-top: 2rem;
 }
 
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 1rem;
+    padding-bottom: 2rem; 
+}
+
+.card {
+    width: 160px;
+    height: 220px;
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.card:hover {
+    transform: scale(1.07);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    border-radius: 10px;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backface-visibility: hidden;
+    font-size: 1rem;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: box-shadow 0.15s ease;
+}
+
+.card-front {
+    background: #444;
+    color: white;
+    flex-direction: column;
+}
+
+.card-back {
+    background: #f0f0f0;
+    color: #222;
+    transform: rotateY(180deg);
+}
+
+.card-emoji {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    top: -10px;
+}
+
+.card-name {
+    font-weight: bold;
+}
+
+
+.skill {
+    margin-bottom: 15px;
+}
+
+.skill span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.skill-bar {
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+}
+.skill-fill {
+    height: 100%;
+    width: 0%;
+    background: #4caf50;
+    border-radius: 10px;
+      transition: width 1.5s ease-out;
+}
+
 .paragraphe {
     line-height: 150%;
     text-align: justify;
@@ -104,122 +203,117 @@ footer {
 }
 
 .project_item {
-  margin-bottom: 30px;
-  width: 800px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    margin-bottom: 30px;
+    width: 800px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .project_item.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project_item p {
-  margin-bottom: 0;
-  margin-right: -50px;
-  line-height: 1.7;
-  text-align: justify;
-  position: relative;
-  padding-left: 40px;
-  font-size: 1.1rem;
+    margin-bottom: 0;
+    margin-right: -50px;
+    line-height: 1.7;
+    text-align: justify;
+    position: relative;
+    padding-left: 40px;
+    font-size: 1.1rem;
 }
 
 .project_number {
-  font-weight: bold;
-  position: absolute;
-  left: 15;
-  top: 0;
-  font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    left: 15;
+    top: 0;
+    font-size: 1.2rem;
 }
 
 .video_container {
-  position: relative;
-  display: inline-block;
-  margin-top: 8px;
-  margin-bottom: 25px;
-  margin-left: 50px;
+    position: relative;
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    margin-left: 50px;
 }
 
 .project_video {
-  display: block;
-  width: 800px;
-  height: 450px;
-  object-fit: cover;
-  margin: 0;
+    display: block;
+    width: 800px;
+    height: 450px;
+    object-fit: cover;
+    margin: 0;
 }
 
 .video_overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: white;
-  font-size: 50px;
-  opacity: 1;
-  transition: opacity 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 50px;
+    opacity: 1;
+    transition: opacity 0.3s;
 }
 
 .video_container.playing:hover .video_overlay {
-  background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .video_container.playing:not(:hover) .video_overlay {
-  opacity: 0;
-  pointer-events: auto;
+    opacity: 0;
+    pointer-events: auto;
 }
 
 #contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 600px;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-#contact input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+#contact input, #contact textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
 }
 
 #contact textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-
-  width: 100%;
-  min-height: 100px;
-  max-height: 500px;
-  max-width: 100%;
-  resize: vertical;
+    width: 100%;
+    min-height: 100px;
+    max-height: 500px;
+    max-width: 100%;
+    resize: vertical;
 }
 
 #contact button {
-  background-color: #444;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
 }
 
 #contact button:hover {
-  background-color: #222;
+    background-color: #222;
 }
 
 #form-status {
-  margin-top: 10px;
-  text-align: center;
+    margin-top: 10px;
+    text-align: center;
 }
