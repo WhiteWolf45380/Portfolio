@@ -18,11 +18,11 @@ sections.forEach(section => {
 });
 
 // Menu de nav actif
-const navLinks = document.querySelectorAll('nav a');
-const currentPage = window.location.pathname.split("/").pop() || "main.html";
+const nav_links = document.querySelectorAll('nav a');
+const current_page = window.location.pathname.split("/").pop() || "main.html";
 
-navLinks.forEach(link => {
-  if (link.getAttribute('href') === currentPage) {
+nav_links.forEach(link => {
+  if (link.getAttribute('href') === current_page) {
     link.classList.add('active');
   }
 });
@@ -38,48 +38,48 @@ window.addEventListener("load", () => {
   const img = new Image();
   img.src = 'assets/background.jpg';
   img.onload = () => {
-    function updateBackground() {
-      const scrollY = window.scrollY; // scroll réel
-      const docHeight = document.documentElement.scrollHeight; // hauteur totale de la page
-      const viewHeight = window.innerHeight; // hauteur du viewport
-      const viewWidth = window.innerWidth; // largeur du viewport
+    function update_background() {
+      const scroll_y = window.scrollY; // scroll réel
+      const doc_height = document.documentElement.scrollHeight; // hauteur totale de la page
+      const view_height = window.innerHeight; // hauteur du viewport
+      const view_width = window.innerWidth; // largeur du viewport
 
       // zoom minimal vertical et horizontal
-      const minHeight = viewHeight * 1.25;
-      const minWidth  = viewWidth; 
-      const imgHeight = Math.max(img.height, minHeight);
-      const imgWidth  = Math.max(img.width, minWidth);
+      const min_height = view_height * 1.25;
+      const min_width  = view_width; 
+      const img_height = Math.max(img.height, min_height);
+      const img_width  = Math.max(img.width, min_width);
 
       // décalage de l'image proportionnel
-      const offset = Math.round(scrollY * (imgHeight - viewHeight) / (docHeight - viewHeight));
+      const offset = Math.round(scroll_y * (img_height - view_height) / (doc_height - view_height));
 
       // applique la taille et la position
-      body.style.backgroundSize = `${imgWidth}px ${imgHeight}px`;
+      body.style.backgroundSize = `${img_width}px ${img_height}px`;
       body.style.backgroundPosition = `center ${-offset}px`;
     }
 
-    window.addEventListener("scroll", updateBackground);
-    window.addEventListener("resize", updateBackground);
-    updateBackground();
+    window.addEventListener("scroll", update_background);
+    window.addEventListener("resize", update_background);
+    update_background();
   };
 });
 
 // Voile assombrissant dynamique
 window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const viewHeight = window.innerHeight;
-  const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  const scroll_y = window.scrollY;
+  const view_height = window.innerHeight;
+  const doc_height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
 
-  const scrollRatio = scrollY / (docHeight - viewHeight);
+  const scroll_ratio = scrollY / (doc_height - view_height);
 
-  const maxBlur = 6;
-  const maxOpacity = 0.3;
+  const max_blur = 6;
+  const max_opacity = 0.3;
 
-  const blurValue = scrollRatio * maxBlur;
-  const opacityValue = 0.25 + scrollRatio * (maxOpacity - 0.25);
+  const blur_value = scroll_ratio * max_blur;
+  const opacity_value = 0.25 + scroll_ratio * (max_opacity - 0.25);
 
-  document.body.style.setProperty('--veil-blur', `${blurValue}px`);
-  document.body.style.setProperty('--veil-opacity', opacityValue);
+  document.body.style.setProperty('--veil-blur', `${blur_value}px`);
+  document.body.style.setProperty('--veil-opacity', opacity_value);
 });
 
 // Survole des sections

@@ -62,18 +62,18 @@ projects.forEach((proj, index) => {
 
   const video = div.querySelector('.project_video');
   const overlay = div.querySelector('.video_overlay');
-  const videoContainer = div.querySelector('.video_container');
+  const video_container = div.querySelector('.video_container');
 
   // Play/Pause toggle
   overlay.addEventListener('click', () => {
     if (video.paused) {
       video.play().catch(() => console.log("Lecture automatique bloquée"));
       overlay.textContent = "⏸";
-      videoContainer.classList.add("playing");
+      video_container.classList.add("playing");
     } else {
       video.pause();
       overlay.textContent = "▶";
-      videoContainer.classList.remove("playing");
+      video_container.classList.remove("playing");
     }
   });
 
@@ -94,7 +94,7 @@ projects.forEach((proj, index) => {
         video.currentTime = 0;
         video.load(); // affiche le poster
         overlay.textContent = "▶";
-        videoContainer.classList.remove("playing");
+        video_container.classList.remove("playing");
       }
     });
   });
@@ -103,17 +103,17 @@ projects.forEach((proj, index) => {
 });
 
 // Animation d'entrée des projets
-const projectItems = document.querySelectorAll('.project_item');
+const project_items = document.querySelectorAll('.project_item');
 
-const observerProjects = new IntersectionObserver(entries => {
+const observer_projects = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add('visible');
-      observerProjects.unobserve(entry.target);
+      observer_projects.unobserve(entry.target);
     }
   });
 }, { threshold: 0.2 });
 
-projectItems.forEach(item => {
-  observerProjects.observe(item);
+project_items.forEach(item => {
+  observer_projects.observe(item);
 });

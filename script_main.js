@@ -10,9 +10,9 @@ const skills = [
 const skills_container = document.querySelector('.skills-container');
 
 skills.forEach(skill => {
-  const skillItem = document.createElement('div');
-  skillItem.className = 'skill-item';
-  skillItem.innerHTML = `
+  const skill_item = document.createElement('div');
+  skill_item.className = 'skill-item';
+  skill_item.innerHTML = `
     <div class="skill-header">
       <img src="${skill.icon}" alt="${skill.name} logo">
       <div class="skill-name">${skill.name}</div>
@@ -21,24 +21,24 @@ skills.forEach(skill => {
       <div class="skill-fill" data-level="${skill.level}" style="background-color: ${skill.color}"></div>
     </div>
   `;
-  skills_container.appendChild(skillItem);
+  skills_container.appendChild(skill_item);
 });
 
   // Animation quand la barre apparaît
-const skillFills = document.querySelectorAll('.skill-fill');
+const skill_fills = document.querySelectorAll('.skill-fill');
 
-const skillsObserver = new IntersectionObserver(entries => {
+const skills_observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       const fill = entry.target;
       const level = fill.dataset.level;
       fill.style.width = level + '%';
-      skillsObserver.unobserve(fill);
+      skills_observer.unobserve(fill);
     }
   });
 }, { threshold: 0.5 });
 
-skillFills.forEach(fill => skillsObserver.observe(fill));
+skill_fills.forEach(fill => skills_observer.observe(fill));
 
 
 // Hobbies et Loisirs - cartes

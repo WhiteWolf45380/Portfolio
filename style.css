@@ -1,7 +1,6 @@
 /*--- Global ---*/
 html {
     height: 100%;
-    scroll-behavior: auto; 
 }
 
 body {
@@ -45,7 +44,7 @@ header {
     text-align: center;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgba(5, 10, 15, 0.6);
+    background: rgba(5, 10, 15, 0.8);
 }
 
 footer {
@@ -396,6 +395,7 @@ ul li ul li {
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
+    margin-bottom: 15px;
 }
 
 #contact textarea {
