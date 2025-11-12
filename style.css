@@ -77,7 +77,7 @@ section {
     padding: 1rem;
     border-radius: 16px;
     position: relative;
-    background: rgba(220, 230, 240, 0.7);
+    background: rgba(240, 245, 250, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
