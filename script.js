@@ -9,7 +9,7 @@ const observer = new IntersectionObserver(entries => {
       entry.target.style.transition = 'all 0.8s ease';
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 
 sections.forEach(section => {
   section.style.opacity = 0;
@@ -30,27 +30,32 @@ navLinks.forEach(link => {
 // Effet de fond
 window.addEventListener("load", () => {
   const body = document.body;
-  
+
+  // On fixe le background au viewport
   body.style.backgroundAttachment = 'fixed';
 
+  // image de fond
   const img = new Image();
   img.src = 'assets/background.jpg';
   img.onload = () => {
     function updateBackground() {
-      const scrollY = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const viewHeight = window.innerHeight;
-      const maxScroll = scrollHeight - viewHeight;
-      
-      // Plus la page est longue par rapport au viewport, plus on ralentit
-      const pageRatio = scrollHeight / viewHeight;
-      const slowdownFactor = 1 / pageRatio; // Inversement proportionnel
-      
-      const coefficient = maxScroll > 0 ? slowdownFactor : 0;
-      const offset = -scrollY * coefficient;
+      const scrollY = window.scrollY; // scroll réel
+      const docHeight = document.documentElement.scrollHeight; // hauteur totale de la page
+      const viewHeight = window.innerHeight; // hauteur du viewport
+      const viewWidth = window.innerWidth; // largeur du viewport
 
-      body.style.backgroundSize = 'cover';
-      body.style.backgroundPosition = `center ${offset}px`;
+      // zoom minimal vertical et horizontal
+      const minHeight = viewHeight * 1.2;
+      const minWidth  = viewWidth; 
+      const imgHeight = Math.max(img.height, minHeight);
+      const imgWidth  = Math.max(img.width, minWidth);
+
+      // décalage de l'image proportionnel
+      const offset = Math.round(scrollY * (imgHeight - viewHeight) / (docHeight - viewHeight));
+
+      // applique la taille et la position
+      body.style.backgroundSize = `${imgWidth}px ${imgHeight}px`;
+      body.style.backgroundPosition = `center ${-offset}px`;
     }
 
     window.addEventListener("scroll", updateBackground);
