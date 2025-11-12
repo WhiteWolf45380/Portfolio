@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
       const viewWidth = window.innerWidth; // largeur du viewport
 
       // zoom minimal vertical et horizontal
-      const minHeight = viewHeight * 1.2;
+      const minHeight = viewHeight * 1.25;
       const minWidth  = viewWidth; 
       const imgHeight = Math.max(img.height, minHeight);
       const imgWidth  = Math.max(img.width, minWidth);
@@ -62,4 +62,32 @@ window.addEventListener("load", () => {
     window.addEventListener("resize", updateBackground);
     updateBackground();
   };
+});
+
+// Voile assombrissant dynamique
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  const viewHeight = window.innerHeight;
+  const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+
+  const scrollRatio = scrollY / (docHeight - viewHeight);
+
+  const maxBlur = 6;
+  const maxOpacity = 0.3;
+
+  const blurValue = scrollRatio * maxBlur;
+  const opacityValue = 0.25 + scrollRatio * (maxOpacity - 0.25);
+
+  document.body.style.setProperty('--veil-blur', `${blurValue}px`);
+  document.body.style.setProperty('--veil-opacity', opacityValue);
+});
+
+// Survole des sections
+sections.forEach(section => {
+  section.addEventListener('mouseenter', () => {
+    // retire la classe 'active' de toutes les sections
+    sections.forEach(sec => sec.classList.remove('active'));
+    // ajoute 'active' à la section survolée
+    section.classList.add('active');
+  });
 });
