@@ -6,10 +6,10 @@ const observer = new IntersectionObserver(entries => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = 1;
       entry.target.style.transform = 'translateY(0)';
-      entry.target.style.transition = 'all 0.8s ease';
+      entry.target.style.transition = 'all 0.65s ease';
     }
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.065 });
 
 sections.forEach(section => {
   section.style.opacity = 0;
@@ -31,10 +31,10 @@ nav_links.forEach(link => {
 window.addEventListener("load", () => {
   const body = document.body;
 
-  // On fixe le background au viewport
+  // Fixage le background au viewport
   body.style.backgroundAttachment = 'fixed';
 
-  // image de fond
+  // Image de fond
   const img = new Image();
   img.src = 'assets/background.jpg';
   img.onload = () => {
