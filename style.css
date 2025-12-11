@@ -213,8 +213,18 @@ ul li ul li {
 
 .card-front {
     background: #444;
-    color: white;
+    background-image: url("assets/cards_front3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    border-radius: 10px;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.8);
     flex-direction: column;
+}
+
+.card-front:hover {
+    color: rgba(255, 255, 255, 1);
 }
 
 .card-back {
@@ -224,10 +234,15 @@ ul li ul li {
 }
 
 .card-emoji {
+    opacity: 80%;
     font-size: 3rem;
     margin-bottom: 0.5rem;
     position: relative;
     top: -10px;
+}
+
+.card-front hover .card-emoji {
+    opacity: 100%;
 }
 
 .card-name {
