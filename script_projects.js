@@ -74,7 +74,6 @@ projects.forEach((proj, index) => {
   // Play/Pause toggle
   overlay.addEventListener('click', () => {
     if (video.paused) {
-      video.play().catch(() => console.log("Lecture automatique bloquée"));
       overlay.textContent = "⏸";
       video_container.classList.add("playing");
     } else {
