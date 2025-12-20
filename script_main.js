@@ -1,10 +1,11 @@
 // Compétences - barres
 const skills = [
   { name: "Python", icon: "assets/icons/python.png", level: 99, color: "#3776AB" },
-  { name: "HTML / CSS", icon: "assets/icons/html.png", level: 60, color: "#E34F26" },
-  { name: "JavaScript", icon: "assets/icons/javascript.png", level: 40, color: "#F7DF1E" },
+  { name: "HTML / CSS", icon: "assets/icons/html.png", level: 70, color: "#E34F26" },
+  { name: "JavaScript", icon: "assets/icons/javascript.png", level: 45, color: "#F7DF1E" },
+  { name: "SQL", icon: "assets/icons/sql.png", level: 55, color: "#00b4baff" },
   { name: "Machine Learning", icon: "assets/icons/ml.png", level: 70, color: "#4CAF50" },
-  { name: "Git / GitHub", icon: "assets/icons/github.png", level: 45, color: "#181717" }
+  { name: "Git / GitHub", icon: "assets/icons/github.png", level: 50, color: "#181717" },
 ];
 
 const skills_container = document.querySelector('.skills-container');

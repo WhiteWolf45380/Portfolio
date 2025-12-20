@@ -29,6 +29,13 @@ const projects = [
     poster: "assets/projects_posters/the_myth_of_velkuria.jpg",
   },
   {
+    name: "Environnement 3D",
+    url: "https://github.com/WhiteWolf45380/Deep-Learning",
+    description: "Un espace 3D virtuel utilisant la rasterization",
+    video: "assets/projects_videos/3D_env.mp4",
+    poster: "assets/projects_posters/3D_env.jpg",
+  },
+  {
     name: "Agent DDQN",
     url: "https://github.com/WhiteWolf45380/Deep-Learning",
     description: "Agent Double-Deep-Quality-Network ayant appris à jouer à cartpole-v1",
@@ -67,7 +74,7 @@ projects.forEach((proj, index) => {
   // Play/Pause toggle
   overlay.addEventListener('click', () => {
     if (video.paused) {
-      video.play().catch(() => console.log("Lecture automatique bloquée"));
+      video.play();
       overlay.textContent = "⏸";
       video_container.classList.add("playing");
     } else {
@@ -83,7 +90,7 @@ projects.forEach((proj, index) => {
     video.currentTime = 0;
     video.load(); // force l’affichage du poster
     overlay.textContent = "▶";
-    videoContainer.classList.remove("playing");
+    video_container.classList.remove("playing");
   });
 
   // Vidéo sort du viewport
