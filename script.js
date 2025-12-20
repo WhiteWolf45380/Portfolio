@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
       const view_width = window.innerWidth; // largeur du viewport
 
       // zoom minimal vertical et horizontal
-      const min_height = view_height * 1.25;
+      const min_height = view_height * 1.3;
       const min_width  = view_width; 
       const img_height = Math.max(img.height, min_height);
       const img_width  = Math.max(img.width, min_width);
@@ -72,8 +72,8 @@ window.addEventListener("scroll", () => {
 
   const scroll_ratio = scrollY / (doc_height - view_height);
 
-  const max_blur = 6;
-  const max_opacity = 0.3;
+  const max_blur = 8;
+  const max_opacity = 0.4;
 
   const blur_value = scroll_ratio * max_blur;
   const opacity_value = 0.25 + scroll_ratio * (max_opacity - 0.25);
