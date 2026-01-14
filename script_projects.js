@@ -71,26 +71,27 @@ projects.forEach((proj, index) => {
   const overlay = div.querySelector('.video_overlay');
   const video_container = div.querySelector('.video_container');
 
-  // Play/Pause toggle
-  overlay.addEventListener('click', () => {
-    if (video.paused) {
-      overlay.textContent = "⏸";
-      video_container.classList.add("playing");
-    } else {
-      video.pause();
-      overlay.textContent = "▶";
-      video_container.classList.remove("playing");
-    }
-  });
-
-  // Vidéo finit
-  video.addEventListener('ended', () => {
+// Play/Pause toggle
+overlay.addEventListener('click', () => {
+  if (video.paused) {
+    video.play();  // ← CETTE LIGNE MANQUE !
+    overlay.textContent = "⏸";
+    video_container.classList.add("playing");
+  } else {
     video.pause();
-    video.currentTime = 0;
-    video.load(); // force l’affichage du poster
     overlay.textContent = "▶";
-    videoContainer.classList.remove("playing");
-  });
+    video_container.classList.remove("playing");
+  }
+});
+
+// Vidéo finit
+video.addEventListener('ended', () => {
+  video.pause();
+  video.currentTime = 0;
+  video.load(); // force l'affichage du poster
+  overlay.textContent = "▶";
+  video_container.classList.remove("playing");  // ← C'était écrit "videoContainer" sans underscore
+});
 
   // Vidéo sort du viewport
   const observer = new IntersectionObserver(entries => {
